@@ -13,23 +13,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout your repo
-      - name: Checkout repository
+      # Step 1: Checkout repo
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Show Docker version for debugging
-      - name: Show Docker version
-        run: sudo docker --version
-
-      # Step 3: List all files in the repo (debug)
-      - name: List repository files
+      # Step 2: Show all files for debugging
+      - name: List all files
         run: ls -R
+
+      # Step 3: Show Docker version
+      - name: Docker version
+        run: docker --version
 
       # Step 4: Build Docker image
       - name: Build Docker image
-        run: sudo docker build -t devops-practice:latest .
+        run: docker build --progress=plain -t devops-practice:latest .
 
       # Step 5: Run Docker container
       - name: Run Docker container
-        run: sudo docker run --rm devops-practice:latest
+        run: docker run --rm devops-practice:latest
 
